@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 21st Birthday Sayang 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ffecd2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            transform: rotate(45deg);
+            animation: float 6s infinite;
+            opacity: 0.7;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 10px;
+            top: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+            z-index: 10;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .left-section {
+            text-align: left;
+        }
+
+        .right-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            color: #ff1493;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .date {
+            color: #ff69b4;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .message {
+            color: #555;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .quote {
+            color: #ff1493;
+            font-style: italic;
+            font-size: 1em;
+            padding: 15px;
+            border-left: 4px solid #ff69b4;
+            margin: 20px 0;
+            background: rgba(255, 182, 193, 0.2);
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .cake-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto 20px;
+        }
+
+        .cake-svg {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(255, 105, 180, 0.3));
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .play-button {
+            background: linear-gradient(135deg, #ff1493, #ff69b4);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .play-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+        }
+
+        .secondary-button {
+            background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            font-size: 1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 182, 193, 0.4);
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .secondary-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 182, 193, 0.6);
+        }
+
+        .hearts-emoji {
+            font-size: 2.5em;
+            margin: 15px 0;
+        }
+
+        #music-status {
+            margin-top: 10px;
+            color: #ff69b4;
+            font-style: italic;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 900px) {
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .left-section {
+                text-align: center;
+            }
+            
+            .message, .quote {
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <div class="left-section">
+                <div class="hearts-emoji">💕</div>
+                <h1>Selamat Ulang Tahun Sayang!</h1>
+                <div class="date">30 Desember - Hari Istimewa Kita 🎂</div>
+                
+                <div class="message">
+                    Untuk cintaku yang tersayang,<br>
+                    Selamat ulang tahun yang ke-21! 🎉<br><br>
+                    
+                    Terima kasih telah menjadi bagian terpenting dalam hidupku. 
+                    Setiap hari bersamamu adalah hadiah yang tak ternilai. 
+                    Semoga tahun ini membawa kebahagiaan, kesuksesan, dan 
+                    semua hal indah yang kamu impikan. ✨<br><br>
+                    
+                    Aku akan selalu ada di sisimu, 
+                    menemanimu melewati setiap momen indah dalam hidup. 
+                    I love you so much! 💖
+                </div>
+
+                <div class="quote">
+                    "Cinta sejati bukan tentang kesempurnaan, 
+                    tetapi tentang menerima kekurangan satu sama lain 
+                    dan tumbuh bersama setiap harinya." 
+                    <br>- Untuk kita berdua 💕
+                </div>
+            </div>
+
+            <div class="right-section">
+                <div class="cake-container">
+                    <svg class="cake-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Candles -->
+                        <g id="candles">
+                            <rect x="65" y="30" width="6" height="20" fill="#FFE4E1" stroke="#FFB6C1" stroke-width="1"/>
+                            <rect x="97" y="25" width="6" height="20" fill="#FFE4E1" stroke="#FFB6C1" stroke-width="1"/>
+                            <rect x="129" y="30" width="6" height="20" fill="#FFE4E1" stroke="#FFB6C1" stroke-width="1"/>
+                            
+                            <!-- Flames -->
+                            <ellipse cx="68" cy="28" rx="4" ry="7" fill="#FFD700">
+                                <animate attributeName="ry" values="7;9;7" dur="0.5s" repeatCount="indefinite"/>
+                            </ellipse>
+                            <ellipse cx="100" cy="23" rx="4" ry="7" fill="#FFD700">
+                                <animate attributeName="ry" values="7;9;7" dur="0.6s" repeatCount="indefinite"/>
+                            </ellipse>
+                            <ellipse cx="132" cy="28" rx="4" ry="7" fill="#FFD700">
+                                <animate attributeName="ry" values="7;9;7" dur="0.55s" repeatCount="indefinite"/>
+                            </ellipse>
+                        </g>
+                        
+                        <!-- Top Layer (Frosting) -->
+                        <ellipse cx="100" cy="50" rx="70" ry="15" fill="#FFB6C1"/>
+                        <rect x="30" y="50" width="140" height="30" fill="#FF69B4"/>
+                        <ellipse cx="100" cy="80" rx="70" ry="15" fill="#FF1493"/>
+                        
+                        <!-- Decorations on top layer -->
+                        <circle cx="50" cy="65" r="4" fill="#FF1493"/>
+                        <circle cx="70" cy="65" r="4" fill="#FF1493"/>
+                        <circle cx="90" cy="65" r="4" fill="#FF1493"/>
+                        <circle cx="110" cy="65" r="4" fill="#FF1493"/>
+                        <circle cx="130" cy="65" r="4" fill="#FF1493"/>
+                        <circle cx="150" cy="65" r="4" fill="#FF1493"/>
+                        
+                        <!-- Middle Layer -->
+                        <ellipse cx="100" cy="80" rx="80" ry="15" fill="#FFB6C1"/>
+                        <rect x="20" y="80" width="160" height="35" fill="#FF69B4"/>
+                        <ellipse cx="100" cy="115" rx="80" ry="15" fill="#FF1493"/>
+                        
+                        <!-- Decorations middle -->
+                        <circle cx="40" cy="97" r="5" fill="#FFD700"/>
+                        <circle cx="70" cy="97" r="5" fill="#FFD700"/>
+                        <circle cx="100" cy="97" r="5" fill="#FFD700"/>
+                        <circle cx="130" cy="97" r="5" fill="#FFD700"/>
+                        <circle cx="160" cy="97" r="5" fill="#FFD700"/>
+                        
+                        <!-- Bottom Layer -->
+                        <ellipse cx="100" cy="115" rx="90" ry="18" fill="#FFB6C1"/>
+                        <rect x="10" y="115" width="180" height="40" fill="#FF69B4"/>
+                        <ellipse cx="100" cy="155" rx="90" ry="18" fill="#FF1493"/>
+                        
+                        <!-- Hearts decoration -->
+                        <text x="30" y="140" font-size="20" fill="#FFD700">💕</text>
+                        <text x="150" y="140" font-size="20" fill="#FFD700">💕</text>
+                        
+                        <!-- Number 21 -->
+                        <text x="75" y="145" font-size="30" fill="#FFF" font-weight="bold" font-family="Arial">21</text>
+                        
+                        <!-- Plate -->
+                        <ellipse cx="100" cy="170" rx="95" ry="12" fill="#FFE4E1" stroke="#FFB6C1" stroke-width="2"/>
+                    </svg>
+                </div>
+
+                <div class="button-container">
+                    <button class="play-button" onclick="playMusic()">
+                        🎵 Putar Lagu Ulang Tahun
+                    </button>
+                    <button class="secondary-button" onclick="showMessage()">
+                        💌 Pesan Spesial
+                    </button>
+                    <button class="secondary-button" onclick="showWishes()">
+                        🎁 Harapan Terbaik
+                    </button>
+                </div>
+                <div id="music-status"></div>
+
+                <div class="hearts-emoji">💝</div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="birthday-song" loop>
+        <source src="D:\ULTAH NURUL\ultah.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Membuat hati-hati yang jatuh
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.width = heart.style.height = (Math.random() * 20 + 10) + 'px';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 6000);
+        }
+
+        setInterval(createHeart, 300);
+
+        // Fungsi untuk memutar musik
+        let isPlaying = false;
+        function playMusic() {
+            const audio = document.getElementById('birthday-song');
+            const status = document.getElementById('music-status');
+            const button = document.querySelector('.play-button');
+            
+            if (!isPlaying) {
+                audio.play();
+                isPlaying = true;
+                button.textContent = '⏸️ Pause Musik';
+                status.textContent = '♪ Musik sedang diputar...';
+            } else {
+                audio.pause();
+                isPlaying = false;
+                button.textContent = '🎵 Putar Lagu Ulang Tahun';
+                status.textContent = '';
+            }
+        }
+
+        // Fungsi pesan spesial
+        function showMessage() {
+            alert('💕 Kamu adalah alasan aku tersenyum setiap hari. Terima kasih telah menjadi bagian terpenting dalam hidupku. I love you more than words can say! 💖');
+        }
+
+        // Fungsi harapan terbaik
+        function showWishes() {
+            alert('🎂 Di hari spesialmu ini, aku berdoa agar:\n\n✨ Semua impianmu terwujud\n💪 Kamu selalu sehat dan bahagia\n🌟 Cepat sempro, sidang, dan Wisuda\n💑 Kita selalu bersama selamanya\n\nHappy 21st Birthday, My Love! 🎉');
+        }
+    </script>
+</body>
+</html>
