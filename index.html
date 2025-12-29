@@ -342,7 +342,7 @@
                 </div>
 
                 <div class="button-container">
-                    <button class="play-button" onclick="playMusic()">
+                    <button class="play-button" id="playBtn" onclick="playMusic()">
                         🎵 Putar Lagu Ulang Tahun
                     </button>
                     <button class="secondary-button" onclick="showMessage()">
@@ -359,8 +359,10 @@
         </div>
     </div>
 
- <audio id="birthday-song" loop>
+    <!-- Audio Element -->
+    <audio id="birthday-song" loop preload="auto">
         <source src="musik.mp3" type="audio/mpeg">
+        <source src="musik.mp3" type="audio/mp3">
         Browser Anda tidak mendukung audio.
     </audio>
 
@@ -382,23 +384,63 @@
 
         setInterval(createHeart, 300);
 
-        // Fungsi untuk memutar musik
+        // Variabel global untuk musik
         let isPlaying = false;
-        function playMusic() {
-            const audio = document.getElementById('birthday-song');
+        let audio = null;
+
+        // Inisialisasi audio saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', function() {
+            audio = document.getElementById('birthday-song');
             const status = document.getElementById('music-status');
-            const button = document.querySelector('.play-button');
+            
+            // Cek apakah audio berhasil dimuat
+            audio.addEventListener('loadeddata', function() {
+                console.log('Audio berhasil dimuat!');
+                status.textContent = '✅ Musik siap diputar! Klik tombol untuk mulai';
+                status.style.color = '#00cc00';
+            });
+            
+            audio.addEventListener('error', function(e) {
+                console.error('Error loading audio:', e);
+                status.textContent = '⚠️ Gagal memuat musik. Pastikan file musik.mp3 ada di folder yang sama.';
+                status.style.color = '#ff0000';
+            });
+        });
+
+        // Fungsi untuk memutar musik
+        function playMusic() {
+            const status = document.getElementById('music-status');
+            const button = document.getElementById('playBtn');
+            
+            if (!audio) {
+                audio = document.getElementById('birthday-song');
+            }
             
             if (!isPlaying) {
-                audio.play();
-                isPlaying = true;
-                button.textContent = '⏸️ Pause Musik';
-                status.textContent = '♪ Musik sedang diputar...';
+                // Coba putar musik
+                const playPromise = audio.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Berhasil diputar
+                        isPlaying = true;
+                        button.textContent = '⏸️ Pause Musik';
+                        status.textContent = '♪ Jamrud - Ulang Tahun sedang diputar...';
+                        status.style.color = '#ff69b4';
+                    }).catch(error => {
+                        // Gagal diputar
+                        console.error('Playback error:', error);
+                        status.textContent = '❌ Tidak bisa memutar musik. Coba klik lagi!';
+                        status.style.color = '#ff0000';
+                    });
+                }
             } else {
+                // Pause musik
                 audio.pause();
                 isPlaying = false;
                 button.textContent = '🎵 Putar Lagu Ulang Tahun';
-                status.textContent = '';
+                status.textContent = '⏸️ Musik dijeda';
+                status.style.color = '#999';
             }
         }
 
@@ -413,16 +455,4 @@
         }
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
